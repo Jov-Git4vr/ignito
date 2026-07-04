@@ -6,7 +6,7 @@ interface HeroTerminalProps {
   onClick?: () => void
 }
 
-export function HeroTerminal({ onHover, onClick }: HeroTerminalProps) {
+export function HeroTerminal({}: HeroTerminalProps) {
   return (
     <section id="home" className="relative isolate min-h-[78vh] overflow-hidden rounded-[2.2rem] border border-fuchsia-500/20 bg-purple-950/20 p-7 shadow-[0_0_80px_rgba(168,85,247,0.16)] backdrop-blur-[2px]">
       <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,_rgba(236,72,153,0.18),_transparent_40%),radial-gradient(circle_at_bottom_right,_rgba(99,102,241,0.2),_transparent_40%)]" />
