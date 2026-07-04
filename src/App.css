@@ -1,0 +1,138 @@
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.16;
+  mix-blend-mode: screen;
+  animation: flicker 7s linear infinite;
+}
+
+.terminal-radar {
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-grid {
+  position: absolute;
+  inset: 10px;
+  border-radius: 1.25rem;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 16px 16px;
+  mask-image: radial-gradient(circle, black 45%, transparent 92%);
+}
+
+.radar-needle {
+  position: absolute;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.95));
+  transform-origin: left center;
+}
+
+.radar-ring {
+  position: absolute;
+  width: 72%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(236, 72, 153, 0.28);
+  border-radius: 9999px;
+  box-shadow: inset 0 0 24px rgba(168, 85, 247, 0.12);
+}
+
+.radar-ring--outer {
+  width: 88%;
+  border-color: rgba(99, 102, 241, 0.24);
+}
+
+.crt-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), transparent 55%, rgba(236, 72, 153, 0.12));
+  pointer-events: none;
+}
+
+.panel-input-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.panel-input-wrap input,
+.panel-input-wrap textarea {
+  position: relative;
+  z-index: 1;
+  color: #f8fbff;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.panel-input-wrap:focus-within input,
+.panel-input-wrap:focus-within textarea {
+  border-color: rgba(236, 72, 153, 0.55) !important;
+  box-shadow: 0 0 0 1px rgba(236, 72, 153, 0.2);
+}
+
+.panel-ripple {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.65), transparent 70%);
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.network-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: #ec4899;
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+.network-dot--slow {
+  animation-delay: 0.3s;
+}
+
+.network-dot--late {
+  animation-delay: 0.6s;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+  50% {
+    opacity: 0.22;
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
